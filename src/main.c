@@ -1,6 +1,6 @@
 #include "lem_in.h"
 
-void debug(t_lemin *lemin)
+void	debug(t_lemin *lemin)
 {
 	size_t i = 0;
 	t_room *tmp;
@@ -22,35 +22,19 @@ void debug(t_lemin *lemin)
 	}
 }
 
-int print_ants(t_lemin *lemin, t_room *path)
+void	print_stdin(char **stdin)
 {
-	t_room *start;
+	size_t i;
 
-	start = path;
-	start->head = 1;
-	while (lemin->end->ants < lemin->nb_ants)
+	i = 0;
+	while (stdin[i])
 	{
-		while (path->type != END && path->next->head == 1)
-		{
-			path = path->next;
-			path->iterations++;
-			if (path->iterations <= lemin->nb_ants)
-				ft_printf("L{RED}%d{EOC}-{GREEN}%s{EOC} ", path->iterations, path->name);
-			if (path->type == END)
-				lemin->end->ants++;
-		}
-		if (path->type != END)
-		{
-			path->next->head = 1;
-		}
-		path = start;
-		lemin->laps++;
-		ft_putchar('\n');
+		ft_putendl(stdin[i]);
+		i++;
 	}
-	ft_printf("\n{BLUE}Total laps:{EOC} {RED}%ld{EOC}\n", --lemin->laps);
 }
 
-int main(int argc, char **argv)
+int		main(void)
 {
 	t_lemin *lemin;
 	t_room *shortest_path;
@@ -59,7 +43,7 @@ int main(int argc, char **argv)
 	if ((lemin = ft_memalloc(sizeof(t_lemin))) == NULL)
 	{
 		perror(NULL);
-		exit(EXIT_FAILURE);
+		return (EXIT_FAILURE);
 	}
 	if (read_inputs(lemin) != ERROR)
 	{
@@ -70,14 +54,6 @@ int main(int argc, char **argv)
 			print_ants(lemin, shortest_path);
 		}
 	}
-//	debug(lemin);
-//	putchar('\n');
-//	while (shortest_path)
-//	{
-//		puts(shortest_path->name);
-//		shortest_path = shortest_path->next;
-//	}
-
 	free_lemin(lemin, shortest_path);
-	return (true);
+	return (EXIT_SUCCESS);
 }

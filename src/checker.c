@@ -1,9 +1,9 @@
 #include "lem_in.h"
 
-int check_for_duplicates(t_room *rooms)
+int	check_for_duplicates(t_room *rooms)
 {
-	char 	*name;
-	t_room	*tmp;
+	char *name;
+	t_room *tmp;
 
 	while (rooms != NULL)
 	{
@@ -19,9 +19,10 @@ int check_for_duplicates(t_room *rooms)
 		}
 		rooms = rooms->next;
 	}
+	return (true);
 }
 
-int check_for_paths(t_room *rooms)
+int	check_for_paths(t_room *rooms)
 {
 	while (rooms)
 	{
@@ -33,6 +34,10 @@ int check_for_paths(t_room *rooms)
 	}
 	return (ERROR);
 }
+
+/*
+**		Here we make sure that the graph is in a valid format by parsing all the rooms.
+*/
 
 int	inputs_are_valid(t_lemin *lemin)
 {
@@ -46,16 +51,15 @@ int	inputs_are_valid(t_lemin *lemin)
 	}
 	if (lemin->start == NULL)
 	{
-		return (print_error("ERROR: Start room doesn't exist."));
+		return (print_error("ERROR: [Start] room doesn't exist."));
 	}
 	if (lemin->end == NULL)
 	{
-		return (print_error("ERROR: End room doesn't exist."));
+		return (print_error("ERROR: [End] room doesn't exist."));
 	}
 	if (check_for_paths(lemin->room) == ERROR)
 	{
 		return (print_error("ERROR: There is no way."));
 	}
-	//Todo: TOUT LE PARSING CHECKER
 	return (true);
 }

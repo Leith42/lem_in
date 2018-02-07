@@ -1,23 +1,22 @@
 #include "lem_in.h"
 
-int free_string_array(char **array)
+void	free_string_array(char **array)
 {
 	size_t i;
 
-	if (array == NULL)
+	if (array)
 	{
-		return (false);
+		i = 0;
+		while (array[i] != NULL)
+		{
+			free(array[i]);
+			i++;
+		}
+		free(array);
 	}
-	i = 0;
-	while (array[i] != NULL)
-	{
-		free(array[i]);
-		i++;
-	}
-	free(array);
 }
 
-void free_lemin(t_lemin *lemin, t_room *path)
+void	free_lemin(t_lemin *lemin, t_room *path)
 {
 	t_room *tmp;
 
@@ -45,25 +44,13 @@ void free_lemin(t_lemin *lemin, t_room *path)
 	}
 }
 
-int print_error(const char *error)
+int		print_error(const char *error)
 {
 	ft_putendl_fd(error, STDERR_FILENO);
 	return (ERROR);
 }
 
-void print_stdin(char **stdin)
-{
-	size_t i;
-
-	i = 0;
-	while (stdin[i])
-	{
-		ft_putendl(stdin[i]);
-		i++;
-	}
-}
-
-char **ft_realloc(char **array, size_t size)
+char	**ft_realloc(char **array, size_t size)
 {
 	char **new;
 	size_t i;
@@ -80,4 +67,16 @@ char **ft_realloc(char **array, size_t size)
 	}
 	free(array);
 	return (new);
+}
+
+void	free_rooms(t_room *r)
+{
+	t_room *tmp;
+
+	while (r)
+	{
+		tmp = r;
+		r = r->next;
+		free(tmp);
+	}
 }

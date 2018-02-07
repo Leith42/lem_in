@@ -34,17 +34,18 @@ typedef struct	s_lemin
 	t_room			*end;
 }				t_lemin;
 
-int read_inputs(t_lemin *);
-int create_room(t_lemin *, const char *line, enum e_type room);
-int free_string_array(char **array);
-t_room	*get_room(char *name, t_lemin *);
-int connect_rooms(t_room *room_a, t_room *room_b);
-void	free_lemin(t_lemin *lemin, t_room *path);
-int	inputs_are_valid(t_lemin *lemin);
-int print_error(const char *error);
-int assigns_room_weights(t_room *room, int weight);
-t_room	*get_shortest_path(t_lemin *lemin);
-char **ft_realloc(char **array, size_t size);
-void print_stdin(char **stdin);
+int			read_inputs(t_lemin *);
+int			create_room(t_lemin *, const char *line, enum e_type room);
+void free_string_array(char **array);
+t_room		*get_room(char *name, t_lemin *);
+int			connect_rooms(t_room *room_a, t_room *room_b);
+void		free_lemin(t_lemin *lemin, t_room *path);
+int			inputs_are_valid(t_lemin *lemin);
+int			print_error(const char *error);
+int			assigns_room_weights(t_room *room, int weight);
+t_room		*get_shortest_path(t_lemin *lemin);
+char		**ft_realloc(char **array, size_t size);
+void		print_ants(t_lemin *lemin, t_room *path);
+void		free_rooms(t_room *r);
 
 #endif
