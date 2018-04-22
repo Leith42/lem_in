@@ -4,8 +4,8 @@ This project is a game about ant farm. Its goal is to find the shortest path fro
 
 ## About lem-in
 
+Lem-in is an initiation to graph theory, many algorithms can be used for this project (like [Dijkstra](https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm) for the most famous).
 At the beginning from standart output the program recieves information about number of ants had to be leaded through path, room names (can be numbers, words, characters etc.) with coordinates and links. Here is an example:
-
 <img width="142" alt="screen shot 2017-07-16 at 7 23 13 pm" align="middle" src="https://user-images.githubusercontent.com/25576444/28254024-ea2c5eb6-6a5d-11e7-922c-5808975b2419.png" >
 
 Comments "##start" and "##end" are provided to show the start and end room information. We don't care about any other comments.
