@@ -20,4 +20,4 @@ make
 
 ./lem-in < maps/subject-1.map
 ```
-Here 'maps/subject-1.map' is an example of game map.
+Here `maps/subject-1.map` is an example of game map.
